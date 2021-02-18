@@ -75,26 +75,21 @@
 
 
       
-      const submitBtn = document.getElementById('submit-btn');
+      const submitBtn = document.querySelector('#submit-btn');
       
-      // Question: What is "e" short for?
       submitBtn.addEventListener('click', (e) => {
         e.preventDefault();
         
-        // Question: What does this code do?
-        let name = document.getElementById('customerName').value.trim();
-        let email = document.getElementById('customerEmail').value.trim();
-        let phoneNumber = document.getElementById('phoneNumber').value.trim();
-        let uniqueID = document.getElementById('customerID').value.trim();
-        
         let newReservation = {
-          name: name,
-          email: email,
-          phoneNumber: phoneNumber,
-          uniqueID: uniqueID,
-        };
+        customerName: document.getElementById('customerName').value.trim(),
+        customerEmail: document.getElementById('customerEmail').value.trim(),
+        phoneNumber: document.getElementById('phoneNumber').value.trim(),
+        customerID: document.getElementById('customerID').value.trim()
+        }
+        console.log('submitBtn.onclick -> newReservation', newReservation);
 
-        fetch('/api/', {
+        
+        fetch('/api/tables', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -103,13 +98,23 @@
         })
           .then((response) => response.json())
           .then((data) => {
-            console.log('add.html', data);
-            alert(`Adding character: ${data.name}`);
+            console.log(data);
+            if (data) {
+              alert('You\'re officially booked!');
+
+            } else {
+              alert('Sorry, you are on the waiting list')
+            }
+              document.getElementById('customerName').value = '';
+              document.getElementById('phoneNumber').value = '';
+              document.getElementById('customerEmail').value = '';
+              document.getElementById('customerID').value = '';
           })
           .catch((error) => {
             console.error('Error:', error);
           });
       });
-    </script> -->
+
+    </script> 
   </body>
 </html>
