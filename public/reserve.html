@@ -41,12 +41,12 @@
 
                 <div class="form-group">
                   <label for="phoneNumber">Phone Number</label>
-                  <input type="text" class="form-control" id="phoneNumber" />
+                  <input type="number" class="form-control" id="phoneNumber" />
                 </div>
 
                 <div class="form-group">
                   <label for="customerEmail">Email</label>
-                  <input type="text" class="form-control" id="customerEmail" />
+                  <input type="email" class="form-control" id="customerEmail" />
                 </div>
 
                 <div class="form-group">
@@ -59,7 +59,7 @@
                 <button
                   type="submit"
                   class="btn btn-primary btn-md"
-                  id="add-btn"
+                  id="submit-btn"
                 >
                   <span class="fa fa-check"></span> Submit
                 </button>
@@ -70,34 +70,36 @@
       </div>
     </div>
 
-    <!-- <script type="text/javascript">
+     <script type="text/javascript">
+
+
+
       
-      const addBtn = document.getElementById('add-btn');
+      const submitBtn = document.getElementById('submit-btn');
       
       // Question: What is "e" short for?
-      addBtn.addEventListener('click', (e) => {
+      submitBtn.addEventListener('click', (e) => {
         e.preventDefault();
         
         // Question: What does this code do?
-        let charName = document.getElementById('name').value.trim();
-        let charRole = document.getElementById('role').value.trim();
-        let charAge = document.getElementById('age').value.trim();
-        let charFp = document.getElementById('force-points').value.trim();
+        let name = document.getElementById('customerName').value.trim();
+        let email = document.getElementById('customerEmail').value.trim();
+        let phoneNumber = document.getElementById('phoneNumber').value.trim();
+        let uniqueID = document.getElementById('customerID').value.trim();
         
-        let newCharacter = {
-          name: charName,
-          role: charRole,
-          age: parseInt(charAge),
-          forcePoints: parseInt(charFp),
+        let newReservation = {
+          name: name,
+          email: email,
+          phoneNumber: phoneNumber,
+          uniqueID: uniqueID,
         };
 
-        // Question: What does this code do??
-        fetch('/api/characters', {
+        fetch('/api/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(newCharacter),
+          body: JSON.stringify(newReservation),
         })
           .then((response) => response.json())
           .then((data) => {
