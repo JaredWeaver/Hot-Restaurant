@@ -23,12 +23,5 @@ router.post('/api/tables', (req, res) => {
 
 });
 
-// app.post('/api/clear', (req, res) => {
-//     // Empty out the arrays of data
-//     tableData.length = 0;
-//     waitListData.length = 0;
-
-//     res.json({ ok: true });
-//   });
 
 module.exports = router;

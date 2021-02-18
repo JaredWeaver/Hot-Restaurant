@@ -54,7 +54,108 @@
       </div>
     </div>
 
-    
+    <script type="text/javascript">
+     
+      const displayTables = () => {
+
+        fetch(`/api/tables`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+          .then((response) => response.json())
+          .then((tableData) => {
+            tableData.forEach((reservation, index) => {
+          
+              const tableList = document.getElementById('tableList');
+
+              let listItem = document.createElement('li');
+              listItem.classList.add('list-group-item', 'mt-4');
+
+              let hr = document.createElement('hr');
+
+              let tableNum = document.createElement('h2');
+              tableNum.textContent = `Table #${index + 1}`;
+
+              let nameEl = document.createElement('h3');
+              nameEl.textContent = `Reservation Name: ${reservation.customerName}`
+
+              let customerIDEl = document.createElement('h3');
+              customerIDEl.textContent = `Customer ID: ${reservation.customerID}`
+
+              let phoneNumEl = document.createElement('h3');
+              phoneNumEl.textContent = `Customer Email: ${reservation.phoneNumber}`
+
+              let emailEl = document.createElement('h3');
+              emailEl.textContent = `Reservation Name: ${reservation.customerEmail}`
+
+              listItem.appendChild(tableNum);
+              listItem.appendChild(hr);
+              listItem.appendChild(nameEl);
+              listItem.appendChild(customerIDEl);
+              listItem.appendChild(phoneNumEl);
+              listItem.appendChild(emailEl);
+
+              tableList.appendChild(listItem)
+            });
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+      }; 
+
+      const displayWaitlist = () => {
+
+      fetch(`/api/waitlist`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((response) => response.json())
+        .then((waitlistData) => {
+          waitlistData.forEach((reservation, index) => {
+             
+            const waitlist = document.getElementById('waitlist');
+
+            let listItem = document.createElement('li');
+            listItem.classList.add('list-group-item', 'mt-4');
+
+            let hr = document.createElement('hr');
+
+            let tableNum = document.createElement('h2');
+            tableNum.textContent = `Table #${index + 1}`;
+
+            let nameEl = document.createElement('h3');
+            nameEl.textContent = `Reservation Name: ${reservation.customerName}`
+
+            let customerIDEl = document.createElement('h3');
+            customerIDEl.textContent = `Customer ID: ${reservation.customerID}`
+
+            let phoneNumEl = document.createElement('h3');
+            phoneNumEl.textContent = `Customer Email: ${reservation.phoneNumber}`
+
+            let emailEl = document.createElement('h3');
+            emailEl.textContent = `Reservation Name: ${reservation.customerEmail}`
+
+            listItem.appendChild(tableNum);
+            listItem.appendChild(hr);
+            listItem.appendChild(nameEl);
+            listItem.appendChild(customerIDEl);
+            listItem.appendChild(phoneNumEl);
+            listItem.appendChild(emailEl);
+
+            waitlist.appendChild(listItem)
+          });
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      }; 
+
+      displayTables();
+      displayWaitlist();
     </script>
   </body>
 </html>
