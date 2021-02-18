@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hot Restaurant Reservations</title>
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="text-center">Hot Restaurant</h1>
+        <h3 class="text-center">Make your reservation below!</h3>
+        <hr />
+        <div class="text-center">
+            <a href="/tables">
+            <button class="btn btn-primary btn-lg">
+                <span class="fa fa-users"></span> View Tables
+            </button>
+            <a href="/">
+                <button class="btn btn-primary btn-lg">
+                    <span class="fa fa-home"></span>
+                </button>
+            </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3><strong>Table Reservation</strong></h3>
+            </div>
+            <div class="card-body">
+              <form method="POST" role="form">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" id="customerName" />
+                </div>
+
+                <div class="form-group">
+                  <label for="phoneNumber">Phone Number</label>
+                  <input type="text" class="form-control" id="phoneNumber" />
+                </div>
+
+                <div class="form-group">
+                  <label for="customerEmail">Email</label>
+                  <input type="text" class="form-control" id="customerEmail" />
+                </div>
+
+                <div class="form-group">
+                  <label for="customerID">UniqueID</label>
+                  <input type="text" class="form-control" id="customerID" />
+                </div>
+              </form>
+              <br />
+              <div class="text-left">
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-md"
+                  id="add-btn"
+                >
+                  <span class="fa fa-check"></span> Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <script type="text/javascript">
+      
+      const addBtn = document.getElementById('add-btn');
+      
+      // Question: What is "e" short for?
+      addBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Question: What does this code do?
+        let charName = document.getElementById('name').value.trim();
+        let charRole = document.getElementById('role').value.trim();
+        let charAge = document.getElementById('age').value.trim();
+        let charFp = document.getElementById('force-points').value.trim();
+        
+        let newCharacter = {
+          name: charName,
+          role: charRole,
+          age: parseInt(charAge),
+          forcePoints: parseInt(charFp),
+        };
+
+        // Question: What does this code do??
+        fetch('/api/characters', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newCharacter),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log('add.html', data);
+            alert(`Adding character: ${data.name}`);
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+      });
+    </script> -->
+  </body>
+</html>
